@@ -1,2 +1,2 @@
-export * from "./"
+export * from "./ProductItem"
 export * from "./styles"

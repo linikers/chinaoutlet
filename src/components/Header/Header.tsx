@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Cart from "../Cart"
+import { Cart } from "../Cart"
 import * as Styles from "./styles";
 
 function Header() {
