@@ -1,1 +1,8 @@
 node_modules
+<<<<<<< HEAD
+=======
+.DS_Store
+dist
+dist-ssr
+*.local
+>>>>>>> bcc4ae514e2e2f8c30bafea314884d793f5fc6f7
