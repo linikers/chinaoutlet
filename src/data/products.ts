@@ -34,6 +34,7 @@ const products = [
       imageUrl:
         "https://images.unsplash.com/photo-1525450824786-227cbef70703?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     },
+    
     {
       price: 200,
       name: "Blusa Branca",
