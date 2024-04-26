@@ -10,7 +10,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
-  const { currentUser } = useSelector((state: RootState) => state.user )
+  const { currentUser } = useSelector((state: RootState) => {
+    console.log(state.user.currentUser); 
+    return state.user 
+})
 
   const dispatch = useDispatch()
 
@@ -18,7 +21,7 @@ export function Header() {
     setCartIsVisible(true);
   };
 
-console.log( {currentUser})
+
 
   const handleLoginClick = () => {
     dispatch({
@@ -26,6 +29,13 @@ console.log( {currentUser})
       payload: { name: "Jorge", pass: "1234"}
     })
   }
+
+  const handleLogoutClick = () => {
+    dispatch({
+      type: userActionTypes.logout,
+    })
+  } 
+  console.log( {currentUser})
   return (
     <>
     <AppBar position="static">
@@ -35,12 +45,12 @@ console.log( {currentUser})
         </Typography>
         <Box sx={{ flexGrow: 1 }}>
           {currentUser ? (
-            <Typography variant="subtitle1">
-              {currentUser}
-            </Typography>
+            <Button variant="contained" color="primary" onClick={handleLogoutClick}>
+            Login
+          </Button>
           ) : (
             <Button variant="contained" color="primary" onClick={handleLoginClick}>
-              Login
+              Sair
             </Button>
           )}
           <IconButton color="inherit" aria-label="shop cart" onClick={handleCartClick}>
