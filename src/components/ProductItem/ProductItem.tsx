@@ -1,27 +1,29 @@
 import { ShoppingCart } from '@material-ui/icons';
-
-// Components
-import { CustomButton } from "../CustomBtn";
-
-// Styles
-import * as Styles from "./styles";
 import { IProduct } from '../../data/products';
+import { Button, Card, CardContent, CardMedia } from '@mui/material';
 
 
 
 export const ProductItem = ({ product }: {product: IProduct}) => {
   return (
-    <Styles.ProductContainer>
-      <Styles.ProductImage imageUrl={product.imageUrl}>
-        <CustomButton startIcon={<ShoppingCart />}>
-          Adicionar ao carrinho
-        </CustomButton>
-      </Styles.ProductImage>
-
-      <Styles.ProductInfo>
-        <p>{product.name}</p>
-        <p>R${product.price}</p>
-      </Styles.ProductInfo>
-    </Styles.ProductContainer>
+    <Card
+      sx={{
+        maxWidth: 300,
+        maxHeight: 260,
+      }}
+    >
+      <CardMedia
+        component="img"
+        alt={product.name}
+        image={product.imageUrl}
+      />
+      <CardContent>
+          <p>{product.name}</p>
+          <p>{product.price}</p>
+          <Button variant='contained' startIcon={<ShoppingCart />}>
+            Adicionar ao carrinho
+          </Button>
+      </CardContent>
+    </Card>
   );
 };

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IProductItem {
-  imageUrl: string
+  imageUrl?: string
 }
 export const ProductContainer = styled.div`
   display: flex;
