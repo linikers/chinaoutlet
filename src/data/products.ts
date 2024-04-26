@@ -1,4 +1,10 @@
-const products = [
+export interface IProduct {
+  id: string | number,
+  imageUrl?: string,
+  name?: string,
+  price?: number,
+}
+const products: IProduct[] = [
     {
       id: "6228fe63b7e6cb904bbe0165",
       price: 150,
