@@ -1,15 +1,12 @@
 //armazena state
 
-import { RootState, UserState } from "../root-reducer"
+import {  UserState } from "../root-reducer"
 import { userActionTypes, UserActions } from "./types"
 
-
-
-
-const initialState: RootState = {
-    user: {currentUser: null}
+const initialState: UserState = {
+    currentUser: null
 }
-export const userReducer = (state = initialState, action: UserActions ): UserState => {
+export const userReducer = (state: UserState = initialState, action: UserActions ): UserState => {
     switch(action.type) {
         case userActionTypes.login:
             if(typeof action.payload.currentUser === "string") {

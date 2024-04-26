@@ -1,19 +1,19 @@
-import React from "react"
-import { BsCartPlus } from "react-icons/bs";
+import { ShoppingCart } from '@material-ui/icons';
 
 // Components
 import { CustomButton } from "../CustomBtn";
 
 // Styles
 import * as Styles from "./styles";
+import { IProduct } from '../../data/products';
 
-// Utilities
 
-export const ProductItem = ({ product }) => {
+
+export const ProductItem = ({ product }: {product: IProduct}) => {
   return (
     <Styles.ProductContainer>
       <Styles.ProductImage imageUrl={product.imageUrl}>
-        <CustomButton startIcon={<BsCartPlus />}>
+        <CustomButton startIcon={<ShoppingCart />}>
           Adicionar ao carrinho
         </CustomButton>
       </Styles.ProductImage>
