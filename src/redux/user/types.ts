@@ -4,5 +4,5 @@ export enum userActionTypes  {
 }
 
 export type UserActions =  
-| { type: userActionTypes.login; payload: { currentUser: string } } 
+| { type: userActionTypes.login; payload: { currentUser: {name: string , pass: string } } } 
 | { type: userActionTypes.logout}
