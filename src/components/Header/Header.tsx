@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Cart } from "../Cart"
-import * as Styles from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
 import { userActionTypes } from "../../redux/user/types";
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-function Header() {
+export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
   const { currentUser } = useSelector((state: RootState) => state.user )
@@ -25,16 +27,28 @@ console.log( {currentUser})
     })
   }
   return (
-    <Styles.Container>
-      <Styles.Logo>China Outlet</Styles.Logo>
-      <Styles.Buttons>
-        <div onClick={handleLoginClick}>Login</div>
-        <div onClick={handleCartClick}>Carrinho</div>
-      </Styles.Buttons>
-
-      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
-    </Styles.Container>
+    <>
+    <AppBar position="static">
+      <Toolbar variant="dense">
+        <Typography variant="h6" noWrap sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+          China Outlet
+        </Typography>
+        <Box sx={{ flexGrow: 1 }}>
+          {currentUser ? (
+            <Typography variant="subtitle1">
+              {currentUser}
+            </Typography>
+          ) : (
+            <Button variant="contained" color="primary" onClick={handleLoginClick}>
+              Login
+            </Button>
+          )}
+          <IconButton color="inherit" aria-label="shop cart" onClick={handleCartClick}>
+            <ShoppingCartIcon />
+          </IconButton>
+        </Box>
+      </Toolbar>
+    </AppBar><Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
+    </>
   );
 }
-
-export default Header;
