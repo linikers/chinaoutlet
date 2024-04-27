@@ -1,18 +1,25 @@
 import { combineReducers } from "redux";
 import { userReducer } from "./user/userReducer";
+import { cartReducer } from "./cart/cartReducer";
+import { IProduct } from "../data/products";
 
+export interface UserState {
+  currentUser: { name: string; pass: string } | null;
+}
+
+export interface CartState {
+  cart: IProduct[];
+}
 
 export interface RootState {
-    user: UserState
+  user: UserState;
+  cart: CartState;
 }
-export interface UserState {
-    currentUser: string | null;
-}
-
 
 export const rootReducer = combineReducers({
-    user: userReducer
-})
+  user: userReducer,
+  cart: cartReducer,
+});
 export type rootState = {
-    user: UserState
-}
+  user: UserState;
+};

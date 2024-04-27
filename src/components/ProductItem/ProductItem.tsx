@@ -1,27 +1,47 @@
-import { ShoppingCart } from '@material-ui/icons';
+import { ShoppingCart } from "@material-ui/icons";
+import { IProduct } from "../../data/products";
+import { Button, Card, CardContent, CardMedia } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../redux/cart/actions";
 
-// Components
-import { CustomButton } from "../CustomBtn";
+export const ProductItem = ({ product }: { product: IProduct }) => {
+  const dispatch = useDispatch();
 
-// Styles
-import * as Styles from "./styles";
-import { IProduct } from '../../data/products';
-
-
-
-export const ProductItem = ({ product }: {product: IProduct}) => {
+  const handleProductClick = () => {
+    dispatch(addProductToCart(product));
+  };
   return (
-    <Styles.ProductContainer>
-      <Styles.ProductImage imageUrl={product.imageUrl}>
-        <CustomButton startIcon={<ShoppingCart />}>
-          Adicionar ao carrinho
-        </CustomButton>
-      </Styles.ProductImage>
-
-      <Styles.ProductInfo>
+    <Card
+      key={product.id}
+      sx={{
+        maxWidth: 220,
+        maxHeight: 360,
+        margin: "18px",
+      }}
+    >
+      <CardMedia
+        component="img"
+        alt={product.name}
+        image={product.imageUrl}
+        sx={{
+          objectFit: "contained",
+          // width: 200,
+          // height: 120,
+          // maxWidth: 220,
+          maxHeight: 120,
+        }}
+      />
+      <CardContent sx={{ height: "100%" }}>
         <p>{product.name}</p>
-        <p>R${product.price}</p>
-      </Styles.ProductInfo>
-    </Styles.ProductContainer>
+        <p>{product.price}</p>
+        <Button
+          variant="contained"
+          startIcon={<ShoppingCart />}
+          onClick={handleProductClick}
+        >
+          Adicionar ao carrinho
+        </Button>
+      </CardContent>
+    </Card>
   );
 };

@@ -1,19 +1,24 @@
-import products from "../../data/products";
-
+import { Container, Grid } from "@mui/material";
+import  { products, IProduct } from "../../data/products";
 // Components
 import { ProductItem } from "../ProductItem";
 
-// Styles
-import * as Styles from "./styles";
 
-const Products = () => {
+
+export const Products = () => {
   return (
-    <Styles.Container>
-      {products.map((product) => (
-        <ProductItem product={product} />
-      ))}
-    </Styles.Container>
+    <Container
+      sx={{
+        display: 'flex',
+      }}
+    >
+      <Grid 
+        spacing={2}
+      >
+        {products.map((product: IProduct) => (
+          <ProductItem product={product} />
+        ))}
+      </Grid>
+    </Container>
   );
 };
-
-export default Products;
