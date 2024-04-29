@@ -8,6 +8,7 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
   const dispatch = useDispatch();
 
   const handleProductClick = () => {
+    console.log(product);
     dispatch(addProductToCart(product));
   };
   return (

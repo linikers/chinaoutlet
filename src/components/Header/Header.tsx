@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Cart } from "../Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
@@ -15,6 +15,18 @@ export function Header() {
     return state.user;
   });
 
+  const { products } = useSelector((state: RootState) => {
+    console.log(state.cart.products);
+    console.log(state.user.currentUser);
+    return state.cart;
+  });
+
+  const productsCount = useMemo(() => {
+    return products.reduce(
+      (acumulator, current) => acumulator + (current.quantity ?? 0),
+      0
+    );
+  }, [products]);
   const dispatch = useDispatch();
 
   const handleCartClick = () => {
@@ -36,7 +48,15 @@ export function Header() {
   console.log({ currentUser });
   return (
     <>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{
+          display: "flex",
+          width: "100vh",
+          backgroundColor: "#ffc000",
+          boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+        }}
+      >
         <Toolbar variant="dense">
           <Typography
             variant="h6"
@@ -68,7 +88,7 @@ export function Header() {
               aria-label="shop cart"
               onClick={handleCartClick}
             >
-              <ShoppingCartIcon />
+              <ShoppingCartIcon />({productsCount})
             </IconButton>
           </Box>
         </Toolbar>

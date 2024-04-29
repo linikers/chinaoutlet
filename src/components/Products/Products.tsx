@@ -1,24 +1,18 @@
-import { Container, Grid } from "@mui/material";
-import  { products, IProduct } from "../../data/products";
+import { Box, Grid } from "@mui/material";
+import { products, IProduct } from "../../data/products";
 // Components
 import { ProductItem } from "../ProductItem";
 
-
-
 export const Products = () => {
   return (
-    <Container
-      sx={{
-        display: 'flex',
-      }}
-    >
-      <Grid 
-        spacing={2}
-      >
+    <Box flexGrow={1} height="100%">
+      <Grid container spacing={2}>
         {products.map((product: IProduct) => (
-          <ProductItem product={product} />
+          <Grid xs={12} sm={6} md={4} lg={3}>
+            <ProductItem product={product} />
+          </Grid>
         ))}
       </Grid>
-    </Container>
+    </Box>
   );
 };

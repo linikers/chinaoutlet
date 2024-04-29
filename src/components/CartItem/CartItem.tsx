@@ -1,45 +1,79 @@
-import React from 'react';
-import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
-import * as Styles from "./styles";
+import {
+  AddCircleOutline,
+  RemoveCircleOutlineOutlined,
+} from "@material-ui/icons";
 
-const CartItem = ({ product }) => {
-  const handleRemoveClick = () => {};
+import { IProduct } from "../../data/products";
+import { Box, Container, IconButton, Typography } from "@mui/material";
+//import { useDispatch } from "react-redux";
+//import { removeProductToCart } from "../../redux/cart/actions";
 
-  const handleIncreaseClick = () => {};
+interface ICartItem {
+  product: IProduct;
+}
 
-  const handleDecreaseClick = () => {};
+//const dispatch = useDispatch();
+
+export const CartItem = ({ product }: ICartItem) => {
+  //const handleRemoveClick = () => {
+  //dispatch(removeProductToCart);
+  //};
+
+  //const handleIncreaseClick = () => {
+
+  //};
+
+  //const handleDecreaseClick = () => {};
 
   return (
-    <Styles.CartItemContainer>
-      <Styles.CartItemImage imageUrl={product.imageUrl} />
-
-      <Styles.CartItemInfo>
-        <p>{product.name}</p>
-        <p>R${product.price}</p>
-
-        <Styles.CartItemQuantity>
-          <AiOutlineMinus
-            size={20}
-            onClick={handleDecreaseClick}
-            aria-label={`Decrease quantity of ${product.name}`}
-          />
-          <p>{product.quantity}</p>
-          <AiOutlinePlus
-            size={20}
-            onClick={handleIncreaseClick}
-            aria-label={`Increase quantity of ${product.name}`}
-          />
-        </Styles.CartItemQuantity>
-      </Styles.CartItemInfo>
-
-      <Styles.RemoveButton
-        onClick={handleRemoveClick}
-        aria-label={`Remove ${product.name}`}
+    <Container
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        marginBottom: "15px",
+      }}
+    >
+      <Box
+        sx={{
+          backgroundImage: `url('${product.imageUrl}')`,
+          height: "250px",
+          width: "170px",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          display: "block",
+          borderRadius: "10px",
+          filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+        }}
       >
-        <AiOutlineClose size={25} />
-      </Styles.RemoveButton>
-    </Styles.CartItemContainer>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            marginLeft: "20px",
+            flex: 1,
+          }}
+        >
+          <Typography variant="body1" fontWeight={600} marginBottom="5px">
+            {product.name}
+          </Typography>
+          <Typography variant="body1" fontWeight="500">
+            R${product.price}
+          </Typography>
+          <Box
+            sx={{ display: "flex", alignItems: "center", marginTop: "10px" }}
+          ></Box>
+          <IconButton>
+            <AddCircleOutline />
+          </IconButton>
+          <Typography variant="body1">{product.quantity}</Typography>
+          <IconButton
+          //onClick={handleDecreaseClick}
+          >
+            <RemoveCircleOutlineOutlined />
+          </IconButton>
+        </Box>
+      </Box>
+    </Container>
   );
 };
-
-export default CartItem;

@@ -8,7 +8,8 @@ export interface UserState {
 }
 
 export interface CartState {
-  cart: IProduct[];
+  products: IProduct[];
+  totalPrice: number;
 }
 
 export interface RootState {
@@ -22,4 +23,5 @@ export const rootReducer = combineReducers({
 });
 export type rootState = {
   user: UserState;
+  cart: CartState;
 };
