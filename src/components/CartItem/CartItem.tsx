@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   AddCircleOutline,
   RemoveCircleOutlineOutlined,
@@ -7,14 +8,19 @@ import { IProduct } from "../../data/products";
 import { Box, Container, IconButton, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import {decraseItemToCart, increaseItemToCart, removeProductToCart } from "../../redux/cart/actions";
+import { RemoveButton } from ".";
 
-interface ICartItem {
-  product: IProduct;
+export interface ICartItem extends IProduct {
+  quantity: number | 0;
+}
+interface ICartItemProps {
+  product: ICartItem
 }
 
 
 
-export const CartItem = ({ product }: ICartItem) => {
+export const CartItem = ( product: ICartItemProps ) => {
+  console.log(product)
   const dispatch = useDispatch();
 
   const handleRemoveClick = () => {
@@ -22,11 +28,15 @@ export const CartItem = ({ product }: ICartItem) => {
   };
 
   const handleIncreaseClick = () => {
-dispatch(increaseItemToCart(product))
+    if(product.quantity > 0) {
+      dispatch(increaseItemToCart(product))
+    }
   };
 
-  const handleDecreaseClick = () => {};
-dispatch(decraseItemToCart(product))
+  const handleDecreaseClick = () => {
+
+    dispatch(decraseItemToCart(product))
+  };
   return (
     <Container
       sx={{
@@ -73,7 +83,7 @@ dispatch(decraseItemToCart(product))
             <IconButton
             onClick={handleRemoveClick}
             >
-
+              <RemoveButton />
             </IconButton>
             <IconButton
             onClick={handleDecreaseClick}

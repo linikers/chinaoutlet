@@ -7,8 +7,8 @@ export const Products = () => {
   return (
     <Box flexGrow={1} height="100%">
       <Grid container spacing={2}>
-        {products.map((product: IProduct) => (
-          <Grid xs={12} sm={6} md={4} lg={3}>
+        {products.map((product: IProduct, index: number) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <ProductItem product={product} />
           </Grid>
         ))}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMemo, useState } from "react";
 import { Cart } from "../Cart";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +7,8 @@ import { userActionTypes } from "../../redux/user/types";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { ICartItem } from "../CartItem";
+
 
 export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -23,7 +26,8 @@ export function Header() {
 
   const productsCount = useMemo(() => {
     return products.reduce(
-      (acumulator, current) => acumulator + (current.quantity ?? 0),
+      (accumulator: number, current: any | ICartItem) => 
+        accumulator + (current.quantity ?? 0),
       0
     );
   }, [products]);
@@ -93,7 +97,9 @@ export function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
+      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} 
+
+      />
     </>
   );
 }

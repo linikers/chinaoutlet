@@ -40,9 +40,9 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
           variant="contained"
           startIcon={<ShoppingCart />}
           onClick={handleProductClick}
-        />
-          {/* Adicionar ao carrinho
-        </Button> */}
+        >
+          Adicionar ao carrinho
+        </Button>
       </CardContent>
     </Card>
   );

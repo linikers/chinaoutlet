@@ -3,7 +3,7 @@ export interface IProduct {
   imageUrl?: string;
   name?: string;
   price?: number;
-  quantity?: number | 0;
+
 }
 export const products: IProduct[] = [
   {
