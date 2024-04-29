@@ -1,3 +1,4 @@
+import { ICartItem } from "../../components/CartItem";
 import { CartState } from "../root-reducer";
 import { CartAction, cartActionTypes } from "./types";
 
@@ -14,7 +15,7 @@ export const cartReducer = (
   switch (action.type) {
     case cartActionTypes.ADD_PRODUCT:
       prodIsAlreadyCart = state.products.some(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.id 
       );
 
       if (prodIsAlreadyCart) {
@@ -29,7 +30,7 @@ export const cartReducer = (
       }
       return {
         ...state,
-        products: [...state.products, { ...action.payload, quantity: 1 }],
+        products: [...state.products, { ...action.payload, quantity: 1 } as ICartItem],
       };
 
     case cartActionTypes.REMOVE_PRODUCT:
@@ -53,6 +54,12 @@ export const cartReducer = (
     case cartActionTypes.REM_QTT_PROD:
       return {
         ...state,
+        products: state.products.map((product) => product.id === action.payload ? {
+          ...product,
+          quantity: Math.max((product.quantity ?? 0) -1 , 0)
+        }
+        : product
+        )
       };
     default:
       return state;

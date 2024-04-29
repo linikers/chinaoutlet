@@ -10,16 +10,18 @@ import { useDispatch } from "react-redux";
 import {decraseItemToCart, increaseItemToCart, removeProductToCart } from "../../redux/cart/actions";
 import { RemoveButton } from ".";
 
+
 export interface ICartItem extends IProduct {
   quantity: number | 0;
 }
-interface ICartItemProps {
-  product: ICartItem
+export interface ICartItemProps {
+  product: ICartItem;
+  quantity: number;
 }
 
 
 
-export const CartItem = ( product: ICartItemProps ) => {
+export const CartItem: React.FC<ICartItemProps> = ( {product, quantity} ) => {
   console.log(product)
   const dispatch = useDispatch();
 

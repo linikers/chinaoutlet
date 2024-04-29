@@ -1,20 +1,19 @@
 
 import { rootState } from "../../redux/root-reducer";
-import { CartItem } from "../CartItem/CartItem";
-import { IProduct } from "../../data/products";
+import { CartItem, ICartItem } from "../CartItem/CartItem";
 import { useSelector } from "react-redux";
 import { Backdrop, Box, Modal, Paper, Typography } from "@mui/material";
 
-interface Icart {
+interface ICart extends ICartItem{
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
 }
-export const Cart: React.FC<Icart> = ({ isVisible, setIsVisible }: Icart) => {
+export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
   const handleEscapeAreaClick = () => setIsVisible(false);
 
 
   
-  const products = useSelector((state: rootState) => state.cart.products);
+  const products = useSelector((state: rootState) => state.cart.products as ICartItem[]);
   return (
 
     <Modal
@@ -35,8 +34,8 @@ export const Cart: React.FC<Icart> = ({ isVisible, setIsVisible }: Icart) => {
         <Typography variant="h6" id="cart-modal-title">
           Seu Carrinho
         </Typography>
-          {products.map((product: IProduct, index: number) => (
-           <CartItem key={index} product={ product } />
+          {products.map((product: ICartItem, index: number) => (
+           <CartItem key={index} product={ product } quantity={product.quantity} />
           ))}
       </Paper>
       </Box>

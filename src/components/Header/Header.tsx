@@ -97,8 +97,7 @@ export function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} 
-
+      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} quantity={productsCount} id={""}
       />
     </>
   );
