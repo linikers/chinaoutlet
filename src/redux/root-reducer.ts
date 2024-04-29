@@ -1,14 +1,15 @@
 import { combineReducers } from "redux";
 import { userReducer } from "./user/userReducer";
 import { cartReducer } from "./cart/cartReducer";
-import { IProduct } from "../data/products";
+import { ICartItem } from "../components/CartItem";
 
 export interface UserState {
   currentUser: { name: string; pass: string } | null;
 }
 
 export interface CartState {
-  cart: IProduct[];
+  products: ICartItem[];
+  totalPrice: number;
 }
 
 export interface RootState {
@@ -22,4 +23,5 @@ export const rootReducer = combineReducers({
 });
 export type rootState = {
   user: UserState;
+  cart: CartState;
 };

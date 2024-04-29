@@ -8,6 +8,7 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
   const dispatch = useDispatch();
 
   const handleProductClick = () => {
+    console.log(product);
     dispatch(addProductToCart(product));
   };
   return (
@@ -35,6 +36,7 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
         <p>{product.name}</p>
         <p>{product.price}</p>
         <Button
+
           variant="contained"
           startIcon={<ShoppingCart />}
           onClick={handleProductClick}

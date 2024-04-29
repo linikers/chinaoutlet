@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useMemo, useState } from "react";
 import { Cart } from "../Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/root-reducer";
@@ -6,15 +7,30 @@ import { userActionTypes } from "../../redux/user/types";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { ICartItem } from "../CartItem";
+
 
 export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
   const { currentUser } = useSelector((state: RootState) => {
-    console.log(state.user.currentUser);
+    // console.log(state.user.currentUser);
     return state.user;
   });
 
+  const { products } = useSelector((state: RootState) => {
+    console.log(state.cart.products);
+    console.log(state.user.currentUser);
+    return state.cart;
+  });
+
+  const productsCount = useMemo(() => {
+    return products.reduce(
+      (accumulator: number, current: any | ICartItem) => 
+        accumulator + (current.quantity ?? 0),
+      0
+    );
+  }, [products]);
   const dispatch = useDispatch();
 
   const handleCartClick = () => {
@@ -36,7 +52,15 @@ export function Header() {
   console.log({ currentUser });
   return (
     <>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{
+          flexGrow: 1,
+
+          backgroundColor: "#ffc000",
+          boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+        }}
+      >
         <Toolbar variant="dense">
           <Typography
             variant="h6"
@@ -68,12 +92,13 @@ export function Header() {
               aria-label="shop cart"
               onClick={handleCartClick}
             >
-              <ShoppingCartIcon />
+              <ShoppingCartIcon />({productsCount})
             </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
-      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
+      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} quantity={productsCount} id={""}
+      />
     </>
   );
 }
