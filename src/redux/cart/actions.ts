@@ -18,13 +18,23 @@ export interface RemQttAction {
   payload: IProduct;
 }
 
-export const addProductToCart = (product: IProduct): AddProductAction => ({
+export const addProductToCart = (product: IProduct) => ({
   type: cartActionTypes.ADD_PRODUCT,
   payload: product,
 });
+
 export const removeProductToCart = (
   product: IProduct
-): RemoveProductAction => ({
+) => ({
   type: cartActionTypes.REMOVE_PRODUCT,
   payload: product,
 });
+
+export const decraseItemToCart = (product: IProduct) => ({
+  type: cartActionTypes.REM_QTT_PROD,
+  payload: product,
+})
+export const increaseItemToCart = (product: IProduct) => ({
+  type: cartActionTypes.ADD_QTT_PROD,
+  payload: product,
+})

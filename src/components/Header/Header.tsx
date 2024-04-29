@@ -11,7 +11,7 @@ export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
   const { currentUser } = useSelector((state: RootState) => {
-    console.log(state.user.currentUser);
+    // console.log(state.user.currentUser);
     return state.user;
   });
 
@@ -51,8 +51,8 @@ export function Header() {
       <AppBar
         position="static"
         sx={{
-          display: "flex",
-          width: "100vh",
+          flexGrow: 1,
+
           backgroundColor: "#ffc000",
           boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
         }}

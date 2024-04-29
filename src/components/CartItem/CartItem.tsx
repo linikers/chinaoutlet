@@ -5,32 +5,34 @@ import {
 
 import { IProduct } from "../../data/products";
 import { Box, Container, IconButton, Typography } from "@mui/material";
-//import { useDispatch } from "react-redux";
-//import { removeProductToCart } from "../../redux/cart/actions";
+import { useDispatch } from "react-redux";
+import {decraseItemToCart, increaseItemToCart, removeProductToCart } from "../../redux/cart/actions";
 
 interface ICartItem {
   product: IProduct;
 }
 
-//const dispatch = useDispatch();
+
 
 export const CartItem = ({ product }: ICartItem) => {
-  //const handleRemoveClick = () => {
-  //dispatch(removeProductToCart);
-  //};
+  const dispatch = useDispatch();
 
-  //const handleIncreaseClick = () => {
+  const handleRemoveClick = () => {
+  dispatch(removeProductToCart(product));
+  };
 
-  //};
+  const handleIncreaseClick = () => {
+dispatch(increaseItemToCart(product))
+  };
 
-  //const handleDecreaseClick = () => {};
-
+  const handleDecreaseClick = () => {};
+dispatch(decraseItemToCart(product))
   return (
     <Container
       sx={{
         display: "flex",
         alignItems: "center",
-        marginBottom: "15px",
+        marginBottom: "14px",
       }}
     >
       <Box
@@ -52,26 +54,33 @@ export const CartItem = ({ product }: ICartItem) => {
             flexDirection: "column",
             marginLeft: "20px",
             flex: 1,
+            maxWidth: "70%",
+            
           }}
         >
-          <Typography variant="body1" fontWeight={600} marginBottom="5px">
-            {product.name}
-          </Typography>
-          <Typography variant="body1" fontWeight="500">
-            R${product.price}
-          </Typography>
-          <Box
-            sx={{ display: "flex", alignItems: "center", marginTop: "10px" }}
-          ></Box>
-          <IconButton>
-            <AddCircleOutline />
-          </IconButton>
-          <Typography variant="body1">{product.quantity}</Typography>
+            <Typography variant="body1" fontWeight={400} marginBottom="5px">
+              {product.name}
+            </Typography>
+            <Typography variant="body1" fontWeight="500">
+              R${product.price}
+            </Typography>        
           <IconButton
-          //onClick={handleDecreaseClick}
+          onClick={handleIncreaseClick}
           >
-            <RemoveCircleOutlineOutlined />
-          </IconButton>
+              <AddCircleOutline />
+            </IconButton>
+            <Typography variant="body1">{product.quantity}</Typography>
+            <IconButton
+            onClick={handleRemoveClick}
+            >
+
+            </IconButton>
+            <IconButton
+            onClick={handleDecreaseClick}
+            >
+              <RemoveCircleOutlineOutlined />
+            </IconButton>
+    
         </Box>
       </Box>
     </Container>

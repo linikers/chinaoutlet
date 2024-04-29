@@ -36,12 +36,13 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
         <p>{product.name}</p>
         <p>{product.price}</p>
         <Button
+
           variant="contained"
           startIcon={<ShoppingCart />}
           onClick={handleProductClick}
-        >
-          Adicionar ao carrinho
-        </Button>
+        />
+          {/* Adicionar ao carrinho
+        </Button> */}
       </CardContent>
     </Card>
   );
