@@ -4,7 +4,7 @@ import { Cart } from "../Cart";
 import { useDispatch, useSelector } from "react-redux";
 import { userActionTypes } from "../../redux/user/types";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Container } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { ICartItem, RootState } from "../../redux/store";
 
@@ -50,14 +50,16 @@ export function Header() {
   };
   console.log({ currentUser });
   return (
-    <>
-      <AppBar
+    <Container>
+   <AppBar
         position="static"
         sx={{
           flexGrow: 1,
-
           backgroundColor: "#ffc000",
           boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+          display: "flex",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
         }}
       >
         <Toolbar variant="dense">
@@ -96,8 +98,9 @@ export function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} quantity={productsCount} id={""}
-      />
-    </>
-  );
+        <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} quantity={productsCount} id={""} />
+
+    </Container>
+ 
+  )
 }

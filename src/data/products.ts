@@ -8,17 +8,17 @@ export interface IProduct {
 export const products: IProduct[] = [
   {
     id: "6228fe63b7e6cb904bbe0165",
-    price: 150,
-    name: "Suéter Branco",
+    price: 2099,
+    name: "I Phone 12 Pro 128gb",
     imageUrl:
-      "https://images.unsplash.com/flagged/photo-1559502867-c406bd78ff24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80",
+      "https://i.imgur.com/FsuTJ5x.png",
   },
   {
     id: "6228fec7b7e6cb904bbe016f",
-    name: "Regata Azul",
-    price: 150,
+    name: "Echo Dot 5a Geração",
+    price: 249,
     imageUrl:
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80s",
+      "https://i.imgur.com/Q5WPvJH.png",
   },
   {
     price: 200,

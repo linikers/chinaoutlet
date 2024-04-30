@@ -11,6 +11,7 @@ export interface UserState {
     cartItems?: ICartItem[];
     products: ICartItem[];
     totalPrice: number;
+    openDialog: false;
   }
   export interface ICartItem extends IProduct {
     quantity: number | 0;

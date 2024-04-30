@@ -15,9 +15,9 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
     <Card
       key={product.id}
       sx={{
-        maxWidth: 220,
-        maxHeight: 360,
-        margin: "18px",
+        width: 260,
+        height: 460,
+        margin: "30px",
       }}
     >
       <CardMedia
@@ -25,23 +25,23 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
         alt={product.name}
         image={product.imageUrl}
         sx={{
-          objectFit: "contained",
+          objectFit: "cover",
+          // padding: "80%"
           // width: 200,
           // height: 120,
           // maxWidth: 220,
-          maxHeight: 120,
         }}
       />
       <CardContent sx={{ height: "100%" }}>
         <p>{product.name}</p>
-        <p>{product.price}</p>
+        <p>R$ {product.price},00</p>
         <Button
-
+          sx={{ fontSize: "14px"}}
           variant="contained"
           startIcon={<ShoppingCart />}
           onClick={handleProductClick}
         >
-          Adicionar ao carrinho
+       Adicionar ao carrinho
         </Button>
       </CardContent>
     </Card>
