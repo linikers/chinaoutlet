@@ -1,12 +1,12 @@
-interface ActionModal {
+type ModalAction  = {
     type: 'SET_OPEN_DIALOG' | 'SET_CLOSE_DIALOG';
 }
 
-export const ActionOpenModal = (): ActionModal => ({
+export const ActionOpenModal = (): ModalAction => ({
     type: 'SET_OPEN_DIALOG',
   });
 
-  export const ActionCloseModal = (): ActionModal => ({
+export const ActionCloseModal = (): ModalAction => ({
     type: 'SET_CLOSE_DIALOG',
   });
 
