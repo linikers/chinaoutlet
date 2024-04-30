@@ -7,23 +7,23 @@ import { ICartItem } from "../../redux/store";
 import { Button } from "@mui/base";
 import { useState } from "react";
 import { DialogCheckout } from "../Checkout/Checkout";
-import { ActionCloseModal} from "../../redux/dialog/actions";
+import { ActionCloseModal, ActionOpenModal} from "../../redux/dialog/actions";
 
 interface ICart extends ICartItem{
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
 }
 export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
-  const [openDialog, setOpenDialog] = useState(false)
+  const [openDialog] = useState(false)
   const dispatch = useDispatch()
   const handleEscapeAreaClick = () => setIsVisible(false);
 
   const handleCloseDialog = () => {
     dispatch(ActionCloseModal())
   }
-  // const handleOpenDialog = () => {
-  //   dispatch(ActionOpenModal())
-  // }
+  const handleOpenDialog = () => {
+    dispatch(ActionOpenModal())
+  }
   const products = useSelector((state: rootState) => state.cart.products as ICartItem[]);
   
   const total = products.reduce((acc, product) => {
@@ -56,7 +56,7 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
           ))}
         <Typography variant="h6">Total: R${total.toFixed(2)}</Typography>
       <Button
-      onClick={()=>setOpenDialog(true)}
+      onClick={handleOpenDialog}
       >
         Finalizar compra
       </Button>
