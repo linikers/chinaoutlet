@@ -1,4 +1,5 @@
 import { IProduct } from "../../data/products";
+import { ICartItem } from "../store";
 import { cartActionTypes } from "./types";
 
 export interface AddProductAction {
@@ -30,11 +31,11 @@ export const removeProductToCart = (
   payload: product,
 });
 
-export const decraseItemToCart = (product: IProduct) => ({
+export const decraseItemToCart = (product: ICartItem) => ({
   type: cartActionTypes.REM_QTT_PROD,
   payload: product,
 })
-export const increaseItemToCart = (product: IProduct) => ({
+export const increaseItemToCart = (product: ICartItem) => ({
   type: cartActionTypes.ADD_QTT_PROD,
   payload: product,
 })

@@ -1,5 +1,5 @@
-import { ICartItem } from "../../components/CartItem";
-import { CartState } from "../root-reducer";
+import { CartState, ICartItem } from "../store";
+
 import { CartAction, cartActionTypes } from "./types";
 
 const initialState: CartState = {

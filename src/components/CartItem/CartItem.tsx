@@ -3,44 +3,45 @@ import {
   AddCircleOutline,
   RemoveCircleOutlineOutlined,
 } from "@material-ui/icons";
-
-import { IProduct } from "../../data/products";
 import { Box, Container, IconButton, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
-import {decraseItemToCart, increaseItemToCart, removeProductToCart } from "../../redux/cart/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decraseItemToCart,
+  increaseItemToCart,
+  removeProductToCart,
+} from "../../redux/cart/actions";
 import { RemoveButton } from ".";
+import { CartState, ICartItem, ICartItemProps } from "../../redux/store";
 
+export const CartItem: React.FC<ICartItemProps> = ({ product }) => {
+  const cartState = useSelector((state: { cart: CartState }) => state.cart);
+  const productQuantity =
+    cartState?.products.find((item: ICartItem) => item.id === product.id)
+      ?.quantity || 0;
 
-export interface ICartItem extends IProduct {
-  quantity: number | 0;
-}
-export interface ICartItemProps {
-  product: ICartItem;
-  quantity: number;
-}
-
-
-
-export const CartItem: React.FC<ICartItemProps> = ( {product, quantity} ) => {
-  console.log(product)
   const dispatch = useDispatch();
 
   const handleRemoveClick = () => {
-  dispatch(removeProductToCart(product));
+    dispatch(removeProductToCart(product));
   };
 
   const handleIncreaseClick = () => {
-    if(product.quantity > 0) {
-      dispatch(increaseItemToCart(product))
+    console.log("id:", product.id);
+    console.log("quantity:", productQuantity);
+    if (product.quantity > 0) {
+      dispatch(increaseItemToCart(product.id));
     }
   };
 
   const handleDecreaseClick = () => {
-
-    dispatch(decraseItemToCart(product))
+    console.log("id:", product.id);
+    console.log("quantity:", productQuantity);
+    dispatch(decraseItemToCart(product.id));
   };
+  console.log(productQuantity);
   return (
     <Container
+      key={product.id}
       sx={{
         display: "flex",
         alignItems: "center",
@@ -67,32 +68,24 @@ export const CartItem: React.FC<ICartItemProps> = ( {product, quantity} ) => {
             marginLeft: "20px",
             flex: 1,
             maxWidth: "70%",
-            
           }}
         >
-            <Typography variant="body1" fontWeight={400} marginBottom="5px">
-              {product.name}
-            </Typography>
-            <Typography variant="body1" fontWeight="500">
-              R${product.price}
-            </Typography>        
-          <IconButton
-          onClick={handleIncreaseClick}
-          >
-              <AddCircleOutline />
-            </IconButton>
-            <Typography variant="body1">{product.quantity}</Typography>
-            <IconButton
-            onClick={handleRemoveClick}
-            >
-              <RemoveButton />
-            </IconButton>
-            <IconButton
-            onClick={handleDecreaseClick}
-            >
-              <RemoveCircleOutlineOutlined />
-            </IconButton>
-    
+          <Typography variant="body1" fontWeight={400} marginBottom="5px">
+            {product.name}
+          </Typography>
+          <Typography variant="body1" fontWeight="500">
+            R${product.price}
+          </Typography>
+          <IconButton onClick={handleIncreaseClick}>
+            <AddCircleOutline />
+          </IconButton>
+          <Typography variant="body1">{productQuantity}</Typography>
+          <IconButton onClick={handleRemoveClick}>
+            <RemoveButton />
+          </IconButton>
+          <IconButton onClick={handleDecreaseClick}>
+            <RemoveCircleOutlineOutlined />
+          </IconButton>
         </Box>
       </Box>
     </Container>

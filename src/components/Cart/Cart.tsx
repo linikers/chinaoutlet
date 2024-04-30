@@ -1,8 +1,9 @@
 
 import { rootState } from "../../redux/root-reducer";
-import { CartItem, ICartItem } from "../CartItem/CartItem";
+import { CartItem } from "../CartItem/CartItem";
 import { useSelector } from "react-redux";
 import { Backdrop, Box, Modal, Paper, Typography } from "@mui/material";
+import { ICartItem } from "../../redux/store";
 
 interface ICart extends ICartItem{
   isVisible: boolean;
@@ -34,7 +35,9 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
         <Typography variant="h6" id="cart-modal-title">
           Seu Carrinho
         </Typography>
-          {products.map((product: ICartItem, index: number) => (
+          {
+          products.filter((product) => product.quantity > 0)
+          .map((product: ICartItem, index: number) => (
            <CartItem key={index} product={ product } quantity={product.quantity} />
           ))}
       </Paper>

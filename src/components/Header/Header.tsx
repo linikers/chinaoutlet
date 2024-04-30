@@ -2,12 +2,11 @@
 import { useMemo, useState } from "react";
 import { Cart } from "../Cart";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/root-reducer";
 import { userActionTypes } from "../../redux/user/types";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { ICartItem } from "../CartItem";
+import { ICartItem, RootState } from "../../redux/store";
 
 
 export function Header() {
