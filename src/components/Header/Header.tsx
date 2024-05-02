@@ -55,19 +55,15 @@ export function Header() {
         boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
         display: "flex",
         justifyContent: "space-between",
-        flexWrap: "wrap",
+        //flexWrap: "wrap",
       }}
     >
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-          >
+      <AppBar sx={{ justifyContent: "space-between" }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Typography variant="h6" noWrap>
             China Outlet
           </Typography>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box>
             {currentUser ? (
               <Button
                 variant="contained"
