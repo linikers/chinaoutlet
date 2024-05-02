@@ -8,7 +8,6 @@ import { Box, Container } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { ICartItem, RootState } from "../../redux/store";
 
-
 export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
@@ -25,7 +24,7 @@ export function Header() {
 
   const productsCount = useMemo(() => {
     return products.reduce(
-      (accumulator: number, current: any | ICartItem) => 
+      (accumulator: number, current: any | ICartItem) =>
         accumulator + (current.quantity ?? 0),
       0
     );
@@ -50,8 +49,13 @@ export function Header() {
   };
   console.log({ currentUser });
   return (
-    <Container>
-   <AppBar
+    <Container
+      sx={{
+        flexGrow: 1,
+        backgroundColor: "#ffc000",
+      }}
+    >
+      <AppBar
         position="static"
         sx={{
           flexGrow: 1,
@@ -98,9 +102,12 @@ export function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-        <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} quantity={productsCount} id={""} />
-
+      <Cart
+        isVisible={cartIsVisible}
+        setIsVisible={setCartIsVisible}
+        quantity={productsCount}
+        id={""}
+      />
     </Container>
- 
-  )
+  );
 }
