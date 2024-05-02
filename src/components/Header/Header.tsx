@@ -52,20 +52,13 @@ export function Header() {
     <Container
       sx={{
         flexGrow: 1,
-        backgroundColor: "#ffc000",
+        boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+        display: "flex",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
       }}
     >
-      <AppBar
-        position="static"
-        sx={{
-          flexGrow: 1,
-          backgroundColor: "#ffc000",
-          boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-        }}
-      >
+      <AppBar position="static">
         <Toolbar variant="dense">
           <Typography
             variant="h6"
