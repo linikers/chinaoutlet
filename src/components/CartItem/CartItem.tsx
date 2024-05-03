@@ -58,34 +58,48 @@ export const CartItem: React.FC<ICartItemProps> = ({ product }) => {
           backgroundPosition: "center",
           display: "block",
           borderRadius: "10px",
-          filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+          filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2))",
         }}
       >
         <Box
           sx={{
             display: "flex",
+            justifyContent: "space-between",
             flexDirection: "column",
             marginLeft: "20px",
             flex: 1,
             maxWidth: "70%",
+            
           }}
         >
           <Typography variant="body1" fontWeight={400} marginBottom="5px">
             {product.name}
           </Typography>
-          <Typography variant="body1" fontWeight="500">
+
+          {/* <Typography variant="body1" fontWeight="500">
             R${product.price}
-          </Typography>
+          </Typography> */}
+
+          <Box sx={{
+            display: "flex",
+            alignItems: "center",
+            bottom: 0,
+          }}>
           <IconButton onClick={handleIncreaseClick}>
             <AddCircleOutline />
           </IconButton>
-          <Typography variant="body1">{productQuantity}</Typography>
           <IconButton onClick={handleRemoveClick}>
             <RemoveButton />
           </IconButton>
           <IconButton onClick={handleDecreaseClick}>
             <RemoveCircleOutlineOutlined />
           </IconButton>
+          <Typography variant="body1"
+          sx={{
+            fontWeight: "bold"
+          }}>{productQuantity}</Typography>
+          </Box>
+
         </Box>
       </Box>
     </Container>

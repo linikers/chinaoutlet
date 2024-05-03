@@ -22,6 +22,8 @@ export const theme = createTheme({
       secondary: "#878787",
     },
   },
+  spacing: 20,
+  
   typography: {
     fontFamily: "'Roboto', sans-serif",
     h1: {
@@ -44,6 +46,22 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          maxWidth: 360,
+          height: 480,
+          padding:"16px",
+          margin: "20px",
+          "@media scren ans (min-width: 768px": {
+            margin: "20px",
+          }
+        }
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -54,7 +72,7 @@ export const theme = createTheme({
           padding: "10px 20px",
           borderRadius: 4,
           "&:hover": {
-            // backgroundColor: "#00562c",
+            backgroundColor: "#00562c",
           },
           "&:focus": {
             outline: "none"

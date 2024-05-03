@@ -15,13 +15,10 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
     <Card
       key={product.id}
       sx={{
-        width: 260,
-        height: 520,
-        margin: "30px",
-        padding: "16px",
-        display: "flex",
+
         flexDirection: "column",
         justifyContent: "space-between",
+
       }}
     >
       <CardMedia
@@ -32,13 +29,13 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
           objectFit: "cover",
           // padding: "80%"
           // width: 200,
-          maxHeight: 320,
-          // maxWidth: 220,
+          height: 200,
+          maxWidth: 220,
         }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
-        <p>{product.name}</p>
-        <p>R$ {product.price},00</p>
+        <p style={{fontSize: "1.2rem"}}>{product.name}</p>
+        <p style={{fontWeight: "bold"}}>R$ {product.price},00</p>
       </CardContent>
         <Button
           sx={{ fontSize: "14px", margin: "12px", bottom: 0}}
@@ -46,7 +43,7 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
           startIcon={<ShoppingCart />}
           onClick={handleProductClick}
         >
-       Adicionar ao carrinho
+       Comprar
         </Button>
     </Card>
   );
