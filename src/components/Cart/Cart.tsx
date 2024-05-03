@@ -43,7 +43,7 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
       <Backdrop open={isVisible} onClick={handleEscapeAreaClick} />
       <Paper
         sx={{
-          width: {xs: "85%", sm: "75%"}, bgcolor: "background.paper", p: 4
+          width: {xs: "85%", sm: "75%"}, bgcolor: "background.paper", p: 4, overflowY: "auto", maxHeight: "80vh"
         }}
       >
         <Typography variant="h6" id="cart-modal-title">
