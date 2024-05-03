@@ -34,7 +34,7 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
         }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
-        <p style={{fontSize: "1.2rem"}}>{product.name}</p>
+        <p style={{ fontSize: "1.2rem"}}>{product.name}</p>
         <p style={{fontWeight: "bold"}}>R$ {product.price},00</p>
       </CardContent>
         <Button

@@ -46,6 +46,7 @@ export const CartItem: React.FC<ICartItemProps> = ({ product }) => {
         display: "flex",
         alignItems: "center",
         marginBottom: "14px",
+        backgroundColor: "rgba(255, 255, 255, 0.2)",
       }}
     >
       <Box
@@ -58,7 +59,8 @@ export const CartItem: React.FC<ICartItemProps> = ({ product }) => {
           backgroundPosition: "center",
           display: "block",
           borderRadius: "10px",
-          filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.2))",
+          filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.8))",
+          
         }}
       >
         <Box
@@ -72,7 +74,7 @@ export const CartItem: React.FC<ICartItemProps> = ({ product }) => {
             
           }}
         >
-          <Typography variant="body1" fontWeight={400} marginBottom="5px">
+          <Typography variant="body1" fontWeight={400} marginBottom="2px" sx={{ fontWeight: "bold" }}>
             {product.name}
           </Typography>
 
