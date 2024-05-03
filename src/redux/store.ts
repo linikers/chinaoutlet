@@ -24,11 +24,5 @@ export interface UserState {
     cart: CartState;
     user: UserState;
   }
-  
-  export interface rootState {
-    user: UserState;
-    cart: CartState;
-  }
-  
+ 
 export const store = createStore(rootReducer)
-export type RootState = ReturnType<typeof rootReducer>

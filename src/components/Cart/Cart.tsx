@@ -6,7 +6,9 @@ import { Backdrop, Box, Modal, Paper, Typography } from "@mui/material";
 import { ICartItem } from "../../redux/store";
 import { Button } from "@mui/base";
 import { DialogCheckout } from "../Checkout/Checkout";
-import { ActionCloseDialog, ActionOpenDialog } from "../../redux/dialog/actions";
+import { setCloseDialog, setOpenDialog } from "../../redux/dialog/dialogReducer";
+
+
 
 
 
@@ -18,18 +20,18 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
   const dispatch = useDispatch()
   const handleEscapeAreaClick = () => setIsVisible(false);
   const isOpenDialog = useSelector((state: rootState) => state.openDialog.isOpenDialog)
-
+console.log(isOpenDialog)
   const handleCloseDialog = () => {
     console.log("fecha dialog")
-    dispatch(ActionCloseDialog())
+    dispatch(setCloseDialog(null))
 
   }
   const handleOpenDialog = () => {
     console.log("finaliza")
-    dispatch(ActionOpenDialog())
+    dispatch(setOpenDialog(null))
   }
   const products = useSelector((state: rootState) => state.cart.products as ICartItem[]);
-  
+  console.log("open cart")
   const total = products.reduce((acc, product) => {
     const price = product.price ?? 0
     return acc + (price * product.quantity);

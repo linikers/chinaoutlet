@@ -9,7 +9,7 @@ export const products: IProduct[] = [
   {
     id: "6228fe63b7e6cb904bbe0165",
     price: 2099,
-    name: "I Phone 12 Pro 128gb",
+    name: "iPhone 12 Pro 128gb",
     imageUrl:
       "https://i.imgur.com/FsuTJ5x.png",
   },

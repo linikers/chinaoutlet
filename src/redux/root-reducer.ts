@@ -10,7 +10,7 @@ export const rootReducer = combineReducers({
   cart: cartReducer,
 });
 export type rootState = {
-  openDialog: {isOpenDialog: boolean};
+  openDialog: {isOpenDialog:  boolean};
   user: UserState;
   cart: CartState;
 };

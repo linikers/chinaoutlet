@@ -1,25 +1,22 @@
-import { DialogAction } from "./actions";
-
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    openDialog: false, 
+    isOpenDialog: false, 
     
   };
  
-  export default function dialogReducer(state = initialState, action: DialogAction) {
-    switch (action.type) {
-      case 'SET_OPEN_DIALOG':
-        return {
-          ...state,
-          isOpenDialog: true, 
-        };
-        case 'SET_CLOSE_DIALOG':
-        return {
-          ...state,
-          isOpenDialog: false, 
-        };
-      default:
-        return state;
+  export const dialogSlice = createSlice({
+    name: 'dialog',
+    initialState,
+    reducers: {
+      setOpenDialog: (state, action) => {
+        state.isOpenDialog = action.payload;
+      },
+      setCloseDialog: (state, action) => {
+        state.isOpenDialog = action.payload;
+      }
     }
-  }
-  
+  });
+
+  export const { setCloseDialog, setOpenDialog} = dialogSlice.actions;
+  export default dialogSlice.reducer

@@ -6,17 +6,18 @@ import { userActionTypes } from "../../redux/user/types";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { ICartItem, RootState } from "../../redux/store";
+import { ICartItem } from "../../redux/store";
+import { rootState } from "../../redux/root-reducer";
 
 export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
-  const { currentUser } = useSelector((state: RootState) => {
+  const { currentUser } = useSelector((state: rootState) => {
     // console.log(state.user.currentUser);
     return state.user;
   });
 
-  const { products } = useSelector((state: RootState) => {
+  const { products } = useSelector((state: rootState) => {
     console.log(state.cart.products);
     console.log(state.user.currentUser);
     return state.cart;
