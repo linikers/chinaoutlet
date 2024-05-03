@@ -8,10 +8,6 @@ import { Button } from "@mui/base";
 import { DialogCheckout } from "../Checkout/Checkout";
 import { setCloseDialog, setOpenDialog } from "../../redux/dialog/dialogReducer";
 
-
-
-
-
 interface ICart extends ICartItem{
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
@@ -23,12 +19,12 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
 console.log(isOpenDialog)
   const handleCloseDialog = () => {
     console.log("fecha dialog")
-    dispatch(setCloseDialog(null))
+    dispatch(setCloseDialog())
 
   }
   const handleOpenDialog = () => {
     console.log("finaliza")
-    dispatch(setOpenDialog(null))
+    dispatch(setOpenDialog())
   }
   const products = useSelector((state: rootState) => state.cart.products as ICartItem[]);
   console.log("open cart")

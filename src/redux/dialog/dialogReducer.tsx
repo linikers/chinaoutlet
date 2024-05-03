@@ -9,14 +9,14 @@ const initialState = {
     name: 'dialog',
     initialState,
     reducers: {
-      setOpenDialog: (state, action) => {
-        state.isOpenDialog = action.payload;
+      setOpenDialog: state => {
+        state.isOpenDialog = true;
       },
-      setCloseDialog: (state, action) => {
-        state.isOpenDialog = action.payload;
+      setCloseDialog: state => {
+        state.isOpenDialog = false;
       }
     }
   });
-
+  
   export const { setCloseDialog, setOpenDialog} = dialogSlice.actions;
   export default dialogSlice.reducer
