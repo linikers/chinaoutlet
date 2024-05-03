@@ -5,24 +5,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { Backdrop, Box, Modal, Paper, Typography } from "@mui/material";
 import { ICartItem } from "../../redux/store";
 import { Button } from "@mui/base";
-import { useState } from "react";
 import { DialogCheckout } from "../Checkout/Checkout";
-import { ActionCloseModal, ActionOpenModal} from "../../redux/dialog/actions";
+import { ActionCloseDialog, ActionOpenDialog } from "../../redux/dialog/actions";
+
+
 
 interface ICart extends ICartItem{
   isVisible: boolean;
   setIsVisible: (isVisible: boolean) => void;
 }
 export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
-  const [openDialog] = useState(false)
   const dispatch = useDispatch()
   const handleEscapeAreaClick = () => setIsVisible(false);
+  const isOpenDialog = useSelector((state: rootState) => state.openDialog.isOpenDialog)
 
   const handleCloseDialog = () => {
-    dispatch(ActionCloseModal())
+    console.log("fecha dialog")
+    dispatch(ActionCloseDialog())
+
   }
   const handleOpenDialog = () => {
-    dispatch(ActionOpenModal())
+    console.log("finaliza")
+    dispatch(ActionOpenDialog())
   }
   const products = useSelector((state: rootState) => state.cart.products as ICartItem[]);
   
@@ -60,10 +64,10 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
       >
         Finalizar compra
       </Button>
-      {openDialog &&  <DialogCheckout 
-        openDialog={openDialog} 
+      {isOpenDialog && <DialogCheckout 
+         open={true}
         handleCloseDialog={handleCloseDialog} 
-        />} 
+        />}
       </Paper>
       </Box>
 

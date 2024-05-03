@@ -1,14 +1,14 @@
-type ModalAction  = {
+export type DialogAction  = {
     type: 'SET_OPEN_DIALOG' | 'SET_CLOSE_DIALOG';
 }
 
-export const ActionOpenModal = (): ModalAction => ({
+export const ActionOpenDialog = (): DialogAction => ({
     type: 'SET_OPEN_DIALOG',
   });
 
-export const ActionCloseModal = (): ModalAction => ({
+export const ActionCloseDialog = (): DialogAction => ({
     type: 'SET_CLOSE_DIALOG',
   });
 
-export const openCheckout = () => ({ type: 'ABRIR_CHECKOUT' });
-export const closeCheckout = () => ({ type: 'FECHAR_CHECKOUT' });
+export const openCheckout = () => ({ type: 'OPEN_CHECKOUT' });
+export const closeCheckout = () => ({ type: 'CLOSE_CHECKOUT' });

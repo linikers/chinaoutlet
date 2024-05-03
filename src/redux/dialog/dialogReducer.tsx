@@ -1,26 +1,22 @@
+import { DialogAction } from "./actions";
 
 
 const initialState = {
     openDialog: false, 
     
   };
-  interface IOpenDialogState {
-    openDialog: boolean;
-    type: 'SET_OPEN_DIALOG' | 'SET_CLOSE_DIALOG';
-  }
-  
  
-  export default function openDialogReducer(state = initialState, action: IOpenDialogState) {
+  export default function dialogReducer(state = initialState, action: DialogAction) {
     switch (action.type) {
       case 'SET_OPEN_DIALOG':
         return {
           ...state,
-          openDialog: true, 
+          isOpenDialog: true, 
         };
         case 'SET_CLOSE_DIALOG':
         return {
           ...state,
-          openDialog: false, 
+          isOpenDialog: false, 
         };
       default:
         return state;

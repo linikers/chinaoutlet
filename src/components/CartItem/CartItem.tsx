@@ -29,14 +29,14 @@ export const CartItem: React.FC<ICartItemProps> = ({ product }) => {
     console.log("id:", product.id);
     console.log("quantity:", productQuantity);
     if (product.quantity > 0) {
-      dispatch(increaseItemToCart(product.id));
+      dispatch(increaseItemToCart(product.id as unknown as ICartItem));
     }
   };
 
   const handleDecreaseClick = () => {
     console.log("id:", product.id);
     console.log("quantity:", productQuantity);
-    dispatch(decraseItemToCart(product.id));
+    dispatch(decraseItemToCart(product.id as unknown as ICartItem));
   };
   console.log(productQuantity);
   return (

@@ -5,6 +5,7 @@ import { CartAction, cartActionTypes } from "./types";
 const initialState: CartState = {
   products: [],
   totalPrice: 0,
+  openDialog: false
 };
 
 export const cartReducer = (

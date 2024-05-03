@@ -1,6 +1,5 @@
 //armazena state
-
-import {  UserState } from "../root-reducer"
+import { UserState } from "../store"
 import { userActionTypes, UserActions } from "./types"
 
 const initialState: UserState = {
