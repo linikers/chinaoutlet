@@ -10,10 +10,10 @@ const initialState = {
     initialState,
     reducers: {
       setOpenDialog: state => {
-        state.isOpenDialog = true;
+       return { ...state, isOpenDialog: true};
       },
       setCloseDialog: state => {
-        state.isOpenDialog = false;
+        return {...state, isOpenDialog: false};
       }
     }
   });
