@@ -8,7 +8,6 @@ import { Box, Container } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { ICartItem, RootState } from "../../redux/store";
 
-
 export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
 
@@ -25,7 +24,7 @@ export function Header() {
 
   const productsCount = useMemo(() => {
     return products.reduce(
-      (accumulator: number, current: any | ICartItem) => 
+      (accumulator: number, current: any | ICartItem) =>
         accumulator + (current.quantity ?? 0),
       0
     );
@@ -50,27 +49,21 @@ export function Header() {
   };
   console.log({ currentUser });
   return (
-    <Container>
-   <AppBar
-        position="static"
-        sx={{
-          flexGrow: 1,
-          backgroundColor: "#ffc000",
-          boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-        }}
-      >
-        <Toolbar variant="dense">
-          <Typography
-            variant="h6"
-            noWrap
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-          >
+    <Container
+      sx={{
+        flexGrow: 1,
+        boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+        display: "flex",
+        justifyContent: "space-between",
+        //flexWrap: "wrap",
+      }}
+    >
+      <AppBar sx={{ justifyContent: "space-between" }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Typography variant="h6" noWrap>
             China Outlet
           </Typography>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box>
             {currentUser ? (
               <Button
                 variant="contained"
@@ -98,9 +91,12 @@ export function Header() {
           </Box>
         </Toolbar>
       </AppBar>
-        <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} quantity={productsCount} id={""} />
-
+      <Cart
+        isVisible={cartIsVisible}
+        setIsVisible={setCartIsVisible}
+        quantity={productsCount}
+        id={""}
+      />
     </Container>
- 
-  )
+  );
 }
