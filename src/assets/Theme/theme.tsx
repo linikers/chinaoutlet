@@ -66,6 +66,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           border: "none",
+          outline: "none",
           // backgroundColor: "#007b33",
           color: "#ffffff",
           fontWeight: 500,
