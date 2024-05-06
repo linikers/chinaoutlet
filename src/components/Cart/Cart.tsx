@@ -2,7 +2,7 @@
 import { rootState } from "../../redux/root-reducer";
 import { CartItem } from "../CartItem/CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { Backdrop, Box, Modal, Paper, Typography } from "@mui/material";
+import {  Box, Modal, Paper, Typography } from "@mui/material";
 import { ICartItem } from "../../redux/store";
 import { Button } from "@mui/base";
 import { DialogCheckout } from "../Checkout/Checkout";
@@ -14,7 +14,7 @@ interface ICart extends ICartItem{
 }
 export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
   const dispatch = useDispatch()
-  const handleEscapeAreaClick = () => setIsVisible(false);
+  // const handleEscapeAreaClick = () => setIsVisible(false);
   const isOpenDialog = useSelector((state: rootState) => state.openDialog.isOpenDialog)
 console.log(isOpenDialog)
   const handleCloseDialog = () => {
@@ -35,14 +35,16 @@ console.log(isOpenDialog)
   return (
     <Modal
       open={isVisible}
-      onClose={()=> setIsVisible(false)}
+      onClose={
+        ()=> setIsVisible(false)
+      }
       aria-labelledby="cart-modal-title"
       aria-describedby="cart-modal-description"
       sx={{ display: "flex", justifyContent: "flex-end"}}
     >
       <Box>
 
-      <Backdrop open={isVisible} onClick={handleEscapeAreaClick} />
+      {/* <Backdrop open={isVisible} onClick={handleEscapeAreaClick} /> */}
       <Paper
         sx={{
           width: {xs: "85%", sm: "75%"}, bgcolor: "background.paper", p: 4, overflowY: "auto", maxHeight: "80vh"
@@ -58,6 +60,7 @@ console.log(isOpenDialog)
           ))}
         <Typography variant="h6">Total: R${total.toFixed(2)}</Typography>
       <Button
+      style={{backgroundColor: "#007bff", border: "none", outline:"none"}}
       onClick={handleOpenDialog}
       >
         Finalizar compra
