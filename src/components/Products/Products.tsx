@@ -1,7 +1,8 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid} from "@mui/material";
 import { products, IProduct } from "../../data/products";
-// Components
+import { Link } from "react-router-dom";
 import { ProductItem } from "../ProductItem";
+// Components
 
 export const Products = () => {
   return (
@@ -9,7 +10,9 @@ export const Products = () => {
       <Grid container spacing={2}>
         {products.map((product: IProduct, index: number) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <Link to={`/productos/${product.id}`}>
             <ProductItem product={product} />
+            </Link>
           </Grid>
         ))}
       </Grid>
