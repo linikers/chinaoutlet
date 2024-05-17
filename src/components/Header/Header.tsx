@@ -8,7 +8,7 @@ import { Box, Container } from "@mui/system";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { ICartItem } from "../../redux/store";
 import { rootState } from "../../redux/root-reducer";
-import { Link } from "react-router-dom";
+import { Link as MuiLink } from "react-router-dom";
 
 export function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -62,14 +62,12 @@ export function Header() {
       <AppBar sx={{ justifyContent: "space-between" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography variant="h6" noWrap>
-            <Link 
+            <MuiLink 
               to="/"
-              color="inherit"
-              underline="none"
-              sx={{ textDecoration: "none", color: "inherit" }}
+              style={{ textDecoration: "none", color: "inherit" }}
             >
             China Outlet
-            </Link>
+            </MuiLink>
           </Typography>
           <Box>
             {currentUser ? (
