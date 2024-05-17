@@ -18,12 +18,12 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
   const isOpenDialog = useSelector((state: rootState) => state.openDialog.isOpenDialog)
 
   const handleCloseDialog = () => {
-    console.log("fecha dialog")
+    
     dispatch(setCloseDialog())
 
   }
   const handleOpenDialog = () => {
-    console.log("finaliza")
+ 
     dispatch(setOpenDialog())
   }
   const products = useSelector((state: rootState) => state.cart.products as ICartItem[]);

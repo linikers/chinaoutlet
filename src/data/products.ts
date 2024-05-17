@@ -26,7 +26,7 @@ export const products: IProduct[] = [
     price: 1999,
     imageUrl: "https://i.imgur.com/n0TYEEx.png",
     name: "Console PlayStation 5 Standard Edition Branco",
-    description: "Console Playstation 5 Standard Edition na cor branca com leitor de disco, processador AMD Zen 2 8-core e placa gráfica AMD Radeon RDNA 2 customizada para incrível performance em jogos.",
+    description: "CONSOLE PS5 Reproduza jogos do PS5 e do PS4 em Blu-ray Disc. Você também pode baixar jogos do PS5 e do PS4 digitais a partir da PlayStation Store. VELOCIDADE DA LUZ. Aproveite o carregamento extremamente rápido com o SSD de altíssima velocidade, uma imersão mais profunda com suporte a feedback tátil1, gatilhos adaptáveis1 e áudio em 3D, além de uma geração inédita de jogos incríveis para PlayStation.",
   },
   {
     id: "6228ff71b7e6cb904bcde3275",
