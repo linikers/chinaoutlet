@@ -12,12 +12,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Products />} />
           <Route 
-            // key={product.id}
             path="/produtos/:productId" 
             element={<ProductPage />} 
           />
         </Routes>
-        {/* <Products /> */}
       </Container>
     </Router>
   );

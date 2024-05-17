@@ -15,8 +15,6 @@ const { productId } = useParams<{ productId: string}>()
 const product = products.find((p: IProduct) => p.id === productId)
 const dispatch = useDispatch()
 
-console.log(product)
-
 const handleProductClick = () => {
   if(product) {
     dispatch(addProductToCart(product))
@@ -68,7 +66,7 @@ if(!product) {
             startIcon={<ShoppingCart />}
             onClick={handleProductClick}
           >
-            Adicionar ao Carrinho
+            Comprar
           </Button>
         </Card>
       </Container>

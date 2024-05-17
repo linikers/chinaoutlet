@@ -1,6 +1,8 @@
-import { createStore } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
 import { rootReducer } from "./root-reducer"
 import { IProduct } from "../data/products";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
 
 // export interface ICartStat
 export interface UserState {
@@ -25,4 +27,16 @@ export interface UserState {
     user: UserState;
   }
  
-export const store = createStore(rootReducer)
+  const persistConfig = {
+    key: "root",
+    storage,
+  }
+
+  const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+
+export const store = configureStore({
+  reducer: persistedReducer,
+});
+
+export const persistor = persistStore(store);
