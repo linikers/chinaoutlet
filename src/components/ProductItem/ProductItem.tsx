@@ -15,10 +15,10 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
     <Card
       key={product.id}
       sx={{
-
         flexDirection: "column",
         justifyContent: "space-between",
-
+        width: 360,
+        height: 580,
       }}
     >
       <CardMedia
@@ -27,8 +27,7 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
         image={product.imageUrl}
         sx={{
           objectFit: "cover",
-          // padding: "80%"
-          // width: 200,
+
           height: 200,
           maxWidth: 220,
         }}

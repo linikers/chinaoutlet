@@ -52,8 +52,6 @@ export const theme = createTheme({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          maxWidth: 360,
-          height: 480,
           padding:"16px",
           margin: "20px",
           "@media scren ans (min-width: 768px": {
