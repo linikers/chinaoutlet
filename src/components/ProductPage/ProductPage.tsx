@@ -28,7 +28,7 @@ if(!product) {
 }
   return (
     <div 
-      style={{ position: "absolute", top: 0, left: 0, bottom: 0, backgroundColor: "rgba(255, 255, 255, 0.4)"}}>
+      style={{ position: "absolute", top: '8%', left: 0, backgroundColor: "rgba(255, 255, 255, 0.4)"}}>
       <Container 
         style={{ 
           display: "flex", 
@@ -58,8 +58,9 @@ if(!product) {
             }}
           />
           <CardContent sx={{ display: "flex", flexDirection: "column", height: "80%" }}>
-            <p style={{ fontSize: "1.5rem", fontWeight: "bold", textAlign: "center" }}>{product.name}</p>
-            <p style={{ fontSize: "1.2rem", textAlign: "center"}}>R$ {product.price},00</p>
+            <p style={{ fontSize: "1.6rem", fontWeight: "bold", textAlign: "center" }}>{product.name}</p>
+            <p style={{ fontSize: "1.4rem", fontWeight: "bold", textAlign: "center"}}>R$ {product.price},00</p>
+            <p style={{ fontSize: "1.2rem", textAlign: "left", margin: "20px" }}> {product.description}</p>
           </CardContent>
           <Button
             sx={{ fontSize: "14px", margin: "auto", marginBottom: "20px"}}
