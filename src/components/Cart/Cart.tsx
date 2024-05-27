@@ -66,6 +66,7 @@ export const Cart: React.FC<ICart> = ({ isVisible, setIsVisible }: ICart) => {
         {isOpenDialog && <DialogCheckout 
           open={true}
           handleCloseDialog={handleCloseDialog} 
+          total={total}
           />}
         </Paper>
       </Box>

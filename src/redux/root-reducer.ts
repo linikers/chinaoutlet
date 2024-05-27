@@ -1,10 +1,10 @@
-import { combineReducers } from "redux";
+import { Reducer, combineReducers } from "redux";
 import { userReducer } from "./user/userReducer";
 import { cartReducer } from "./cart/cartReducer";
 import { CartState, UserState } from "./store";
 import dialogReducer from "./dialog/dialogReducer";
 
-export const rootReducer = combineReducers({
+export const rootReducer: Reducer = combineReducers({
   openDialog: dialogReducer,
   user: userReducer,
   cart: cartReducer,

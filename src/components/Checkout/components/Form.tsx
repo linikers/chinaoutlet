@@ -1,8 +1,11 @@
-import { Box, Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
 import saveUserData, { IUser } from "./saveData";
 
-export const FormDialog = () => {
+interface IFormDialog {
+  total: number;
+}
+export const FormDialog: React.FC<IFormDialog> = ( {total} ) => {
   const [userData, setUserData] = useState<IUser>({
     nome: "",
     rua: "",
@@ -134,6 +137,9 @@ export const FormDialog = () => {
           />
         </Box>
       </Box>
+      <Typography variant="h6" sx={{ margin: "1rem 0"}}>
+        Total: R${total.toFixed(2)}
+      </Typography>
         <Button type="submit" sx={{         
           backgroundColor: "#007bff", 
           color: "#f5f5f5", 
