@@ -137,7 +137,7 @@ export const FormDialog: React.FC<IFormDialog> = ( {total} ) => {
           />
         </Box>
       </Box>
-      <Typography variant="h6" sx={{ margin: "1rem 0"}}>
+      <Typography variant="subtitle1" sx={{ margin: "1rem 0", color: "#FFFFFF"}}>
         Total: R${total.toFixed(2)}
       </Typography>
         <Button type="submit" sx={{         
