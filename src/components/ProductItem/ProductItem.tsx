@@ -7,18 +7,20 @@ import { addProductToCart } from "../../redux/cart/actions";
 export const ProductItem = ({ product }: { product: IProduct }) => {
   const dispatch = useDispatch();
 
-  const handleProductClick = () => {
-    console.log(product);
+  const handleProductClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event?.preventDefault()
     dispatch(addProductToCart(product));
   };
   return (
     <Card
       key={product.id}
       sx={{
-
         flexDirection: "column",
         justifyContent: "space-between",
-
+        // width: 360,
+        maxWidth: 480,
+        height: 580,
+        maxHeight: 580,
       }}
     >
       <CardMedia
@@ -27,15 +29,13 @@ export const ProductItem = ({ product }: { product: IProduct }) => {
         image={product.imageUrl}
         sx={{
           objectFit: "cover",
-          // padding: "80%"
-          // width: 200,
           height: 200,
-          maxWidth: 220,
+          maxWidth: "100%",
         }}
       />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <p style={{ fontSize: "1.2rem"}}>{product.name}</p>
-        <p style={{fontWeight: "bold"}}>R$ {product.price},00</p>
+      <CardContent sx={{ flexGrow: 1, overflow: "hidden" }}>
+        <p style={{ fontSize: "1rem", bottom: 0}}>{product.name}</p>
+        <p style={{ fontSize: "1.2rem", fontWeight: "bold", bottom: 0}}>R$ {product.price},00</p>
       </CardContent>
         <Button
           sx={{ fontSize: "14px", margin: "12px", bottom: 0}}

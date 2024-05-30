@@ -1,7 +1,7 @@
 import { rootState } from "../../redux/root-reducer";
 import { CartItem } from "../CartItem/CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { Backdrop, Box, Modal, Paper, Typography } from "@mui/material";
+import { Box, Modal, Paper, Typography } from "@mui/material";
 import { ICartItem } from "../../redux/store";
 import { Button } from "@mui/base";
 import { DialogCheckout } from "../Checkout/Checkout";

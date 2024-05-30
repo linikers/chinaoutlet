@@ -1,5 +1,5 @@
 import { Dialog,  DialogContent } from "@mui/material"
-// import { FormDialog } from "./components/Form"
+import { FormDialog } from "./components/Form"
 
 interface IDialogProps {
     open: boolean,
@@ -11,7 +11,7 @@ export const DialogCheckout = (props: IDialogProps) => {
      return(
         <Dialog  onClose={handleCloseDialog} open={open}>
         <DialogContent>
-          {/* <FormDialog /> */}
+          <FormDialog />
         </DialogContent>
         {/* <DialogActions /> */}
         </Dialog>

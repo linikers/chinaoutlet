@@ -134,7 +134,13 @@ export const FormDialog = () => {
           />
         </Box>
       </Box>
-      <Button type="submit">Comprar</Button>
+        <Button type="submit" sx={{         
+          backgroundColor: "#007bff", 
+          color: "#f5f5f5", 
+          "&:hover": { 
+            backgroundColor: "#0056b3",
+          }
+          }}>Comprar</Button>
     </form>
   );
 };
